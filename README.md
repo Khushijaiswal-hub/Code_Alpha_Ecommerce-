@@ -92,7 +92,8 @@ ecommerce/
 ## 👩‍💻 Author
 
 **Khushi Jaiswal**  
-CodeAlpha Web Development Intern
+CodeAlpha full stack develop intern
+
 
 ---
 
