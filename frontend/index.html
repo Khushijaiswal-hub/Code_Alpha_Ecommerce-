@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shopy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a class="logo" href="#" onclick="showPage('home')">Shopy</a>
+    <div class="nav-links">
+      <a onclick="showPage('home')">Store</a>
+      <a onclick="requireAuth('orders')">My Orders</a>
+    </div>
+    <div class="nav-right">
+      <button class="cart-btn" onclick="showPage('cart')">
+        🛒 Cart <span class="cart-badge" id="cartBadge">0</span>
+      </button>
+      <div id="authArea"></div>
+    </div>
+  </div>
+</nav>
+
+<div class="toast" id="toast"></div>
+
+<main>
+
+  <!-- HOME -->
+  <section id="page-home" class="page active">
+    <div class="hero">
+      <div class="hero-text">
+        <p class="hero-tag">✨ New Collection 2024</p>
+        <h1>Discover <em>Premium</em><br/>Products</h1>
+        <p class="hero-sub">Curated picks. Fast delivery. No fuss.</p>
+        <button class="btn-primary" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Shop Now →</button>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-blob"></div>
+        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500" alt="hero" class="hero-img"/>
+      </div>
+    </div>
+    <section id="shop" class="products-section">
+      <div class="section-header">
+        <h2>All Products</h2>
+        <div class="filters">
+          <input class="search-input" id="searchInput" type="text" placeholder="Search products…" oninput="filterProducts()"/>
+          <div class="category-tabs" id="categoryTabs"></div>
+        </div>
+      </div>
+      <div class="product-grid" id="productGrid"><p class="loading">Loading…</p></div>
+    </section>
+  </section>
+
+  <!-- PRODUCT DETAIL -->
+  <section id="page-product" class="page">
+    <div class="detail-container" id="productDetail"></div>
+  </section>
+
+  <!-- CART -->
+  <section id="page-cart" class="page">
+    <div class="cart-container">
+      <h2>Your Cart</h2>
+      <div id="cartItems"></div>
+      <div id="cartSummary"></div>
+    </div>
+  </section>
+
+  <!-- CHECKOUT -->
+  <section id="page-checkout" class="page">
+    <div class="checkout-container">
+      <h2>Checkout</h2>
+      <div class="checkout-grid">
+        <div class="checkout-left">
+          <h3>Shipping Address</h3>
+          <input id="chkName"    type="text" placeholder="Full Name"/>
+          <input id="chkStreet"  type="text" placeholder="Street Address"/>
+          <div class="form-row">
+            <input id="chkCity"    type="text" placeholder="City"/>
+            <input id="chkZip"     type="text" placeholder="ZIP Code"/>
+          </div>
+          <input id="chkCountry" type="text" placeholder="Country"/>
+          <h3 style="margin-top:1.5rem">Payment <small>(demo — no real charge)</small></h3>
+          <input type="text" value="4242 4242 4242 4242" readonly class="readonly-input"/>
+          <div class="form-row">
+            <input type="text" value="12/26" readonly class="readonly-input"/>
+            <input type="text" value="123"   readonly class="readonly-input"/>
+          </div>
+          <button class="btn-primary full" onclick="placeOrder()">Place Order 🎉</button>
+        </div>
+        <div class="checkout-summary" id="checkoutSummary"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORDERS -->
+  <section id="page-orders" class="page">
+    <div class="orders-container">
+      <h2>My Orders</h2>
+      <div id="ordersList"><p class="loading">Loading…</p></div>
+    </div>
+  </section>
+
+  <!-- AUTH -->
+  <section id="page-auth" class="page">
+    <div class="auth-container">
+      <div class="auth-card">
+        <div class="auth-tabs">
+          <button class="auth-tab active" id="tabLogin"    onclick="switchTab('login')">Login</button>
+          <button class="auth-tab"        id="tabRegister" onclick="switchTab('register')">Register</button>
+        </div>
+        <div id="loginForm">
+          <input id="loginEmail" type="email"    placeholder="Email"/>
+          <input id="loginPass"  type="password" placeholder="Password"/>
+          <button class="btn-primary full" onclick="login()">Sign In</button>
+        </div>
+        <div id="registerForm" style="display:none">
+          <input id="regName"  type="text"     placeholder="Full Name"/>
+          <input id="regEmail" type="email"    placeholder="Email"/>
+          <input id="regPass"  type="password" placeholder="Password (min 6 chars)"/>
+          <button class="btn-primary full" onclick="register()">Create Account</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUCCESS -->
+  <section id="page-success" class="page">
+    <div class="success-container">
+      <div class="success-icon">🎉</div>
+      <h2>Order Placed!</h2>
+      <p>Thank you! Your order is confirmed and saved in the database.</p>
+      <br/>
+      <button class="btn-primary" onclick="showPage('orders')" style="margin-right:1rem">View Orders</button>
+      <button class="btn-secondary" onclick="showPage('home')">Continue Shopping</button>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>Shopy © 2024 · CodeAlpha Internship Task 1 · Express.js + MySQL</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
