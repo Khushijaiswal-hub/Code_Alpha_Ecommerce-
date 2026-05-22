@@ -106,5 +106,5 @@ This project is open source and available under the [MIT License](LICENSE).
 ![orderpage](order.png)
 <br>
 ## Demo Video
-[watch](https://drive.google.com/file/d/1LM4Jm3bI1QTDxDNKKVR0_DK08f_cLVcO/view?usp=sharing)
+[watch Demo](https://drive.google.com/file/d/1LM4Jm3bI1QTDxDNKKVR0_DK08f_cLVcO/view?usp=sharing)
 
