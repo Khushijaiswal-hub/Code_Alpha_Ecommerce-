@@ -100,3 +100,8 @@ CodeAlpha full stack develop intern
 ## 📄 License
 
 This project is open source and available under the [MIT License](LICENSE).
+<br>
+![Homepage](homepage.png)
+![productpage](product.png)
+![orderpage](order.png)
+
